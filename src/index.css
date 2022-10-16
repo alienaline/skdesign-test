@@ -1,13 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+
+@font-face {
+  font-family: 'SF UI Display';
+  font-weight: 400;
+  src: url('/src/assets/fonts/SF-UI-Display/SFUIDisplay-Regular.woff') format('woff'),
+       url('/src/assets/fonts/SF-UI-Display/SFUIDisplay-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'SF UI Display';
+  font-weight: 600;
+  src: url('/src/assets/fonts/SF-UI-Display/SFUIDisplay-Semibold.woff') format('woff'),
+       url('/src/assets/fonts/SF-UI-Display/SFUIDisplay-Semibold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'SF UI Display';
+  font-weight: 700;
+  src: url('/src/assets/fonts/SF-UI-Display/SFUIDisplay-Bold.woff') format('woff'),
+       url('/src/assets/fonts/SF-UI-Display/SFUIDisplay-Bold.woff2') format('woff2');
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #353238;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+button, 
+a,
+select,
+input {
+  outline: none;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  background-color: inherit;
+  padding: 0;
+}
+
