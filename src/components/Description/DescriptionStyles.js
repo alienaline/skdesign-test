@@ -20,4 +20,11 @@ export const DescriptionStyles = styled.div`
         color: #0086A8;
         text-decoration: none;
     }
+
+    @media screen and (max-width: 496px) {
+        .header {
+            font-size: 20px;
+            margin: 20px 0;
+        }
+    }
 `;

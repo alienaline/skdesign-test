@@ -1,39 +1,122 @@
 import React, { useState } from 'react';
-import Button from './Buttons/Button';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { FormStyles } from './FormStyles';
-import Input from './Inputs/Input';
-import SelectData from './SelectData/SelectData';
+import SelectDataCities from './SelectData/SelectDataCities';
+import SelectDataSources from './SelectData/SelectDataSources';
+import cities from '../../assets/data/cities.json';
+import sources from '../../assets/data/sources.json';
+import InputController from './Inputs/InputController';
+
+interface IForm {
+    name: string;
+    tel: string;
+    email: string;
+    socialLink: string;
+    city: string;
+    organization: string;
+    recipient: string;
+    sources: string;
+}
 
 function Form() {
-    const [displayOptions, setDisplayOptions] = useState(false);
+    const [displayOptions, setDisplayOptions] = useState<boolean>(false);
+    const { handleSubmit, control,  formState: { errors } } = useForm<IForm>({ mode: 'onChange'});
 
+    const onSubmit: SubmitHandler<IForm> = data => console.log(JSON.stringify(data));
+    
     return (
         <FormStyles>
-            <form className='formContainer'>
+            <form onSubmit={handleSubmit(onSubmit)}
+                className='formContainer'>
                 <div className='requireInputs'>
-                    <Input placeholder='Иван'>Ваше имя *</Input>
-                    <Input placeholder='+7 (900) 000-00-00'>Номер телефона *</Input>
-                    <Input placeholder='example@skdesign.ru'>E-mail *</Input>
-                    <Input placeholder='instagram.com/skdesign'>Ссылка на профиль *</Input>
-                    <SelectData />
+                    <InputController
+                        name='name'
+                        label='Ваше имя *'
+                        control={control}
+                        rules={{ 
+                            required: 'Это обязательное поле',
+                            minLength: {
+                                value: 2,
+                                message: 'Имя должно быть больше 1 символа'
+                            } }}
+                        helperText={errors?.name?.message} />
+                    <InputController 
+                        name='tel'
+                        label='Номер телефона *'
+                        control={control}
+                        rules={{ 
+                            required: 'Это обязательное поле',
+                            minLength: {
+                                value: 9,
+                                message: 'Номер не должен быть короче 9 символов'
+                            } }}
+                        helperText={errors?.tel?.message} />
+                    <InputController 
+                        name='email'
+                        type='email'
+                        label='E-mail *'
+                        control={control}
+                        rules={{ 
+                            required: 'Это обязательное поле',
+                            minLength: {
+                                value: 9,
+                                message: 'Номер не должен быть короче 9 символов'
+                            } }}
+                        helperText={errors?.email?.message} />
+                    <InputController 
+                        name='socialLink'
+                        type='url'
+                        label='Ссылка на профиль *'
+                        control={control}
+                        rules={{ 
+                            required: 'Это обязательное поле',
+                            minLength: {
+                                value: 9,
+                                message: 'Номер не должен быть короче 9 символов'
+                            } }}
+                        helperText={errors?.socialLink?.message} />
+                    <SelectDataCities 
+                        data={cities}
+                        control={control}
+                        name='city'
+                        label='Выберите город *'
+                        rules={{ required: 'Это обязательное поле' }}
+                        helperText={errors?.city?.message} />
                 </div>
                 <div className='optionalInputs'>
-                    <Input placeholder='SK Design'>Название огранизации/студии</Input>
+                    <InputController 
+                        name='organization'
+                        label='Название огранизации/студии'
+                        control={control} />
                     <button 
                         type='button'
                         className='buttonShowOptions'
                         onClick={() => setDisplayOptions(!displayOptions)}>
                         {displayOptions ? 'Скрыть' : 'Показать'} дополнительные поля
-                        <span className={`arrow ${displayOptions ? 'up' : 'down'}`}></span>
+                        <span 
+                            className='arrow'
+                            data-state={`${displayOptions? 'up' : 'down'}`}>
+                        </span>
                     </button>
                     { displayOptions &&
                         <div className='options'>
-                            <Input placeholder='ФИО'>Получатель</Input>
-                            <SelectData />
+                            <InputController 
+                                name='recipient'
+                                label='Введите имя получателя'
+                                control={control}/>
+                            <SelectDataSources
+                                name='sources'
+                                data={sources}
+                                control={control}
+                                label='Откуда вы узнали о нас?' />
                         </div>
                     }
-                    <Button>Отправить заявку</Button>
                 </div>
+                <button 
+                    type='submit'
+                    className='buttonSubmit'>
+                    Отправить заявку
+                </button>
             </form>
         </FormStyles>
     );

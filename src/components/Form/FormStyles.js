@@ -28,71 +28,32 @@ export const FormStyles = styled.div`
         gap: 20px 17px;
     }
 
-    .fieldset {
-        border: 2px solid ${colors.fieldsetBorder};
-        border-radius: 8px;
-        color: ${colors.fieldsetText};
-        font-family: 'SF UI Display', sans-serif;
-        font-size: 12px;
-        margin: 0;
-    }
-
-    .focuseFieldset {
-        border: 2px solid ${colors.buttonSubmit};
-    }
-
-    .legend {
-        padding: 0 5px;
-    }
-
-    .focuseLegend {
-        color: ${colors.buttonSubmit};
-    }
-
-    .input {
-        font-size: 14px;
-        width: 100%;
-        padding: 5px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        &::placeholder {
-            color: ${colors.placeholder};
-        }
-    }
-
-    .selectData {
+    .selectDataCities {
         grid-column: 1 / span 2;
         grid-row: 3;
     }
 
-    .optionalInputs > *,
-    .options > * {
+    .selectDataSources {
+        margin: 20px 0 0 0;
+    }
+
+    .optionalInputs {
+        display: grid;
+        gap: 20px;
         margin: 20px 0;
     }
-    
-    .options :last-child,
-    .options {
-        margin-bottom: 0;
+
+    .options > * {
+        width: 100%;
     }
 
     .buttonShowOptions {
         margin: 0;
-        display: inline-flex;
+        display: flex;
         align-items: center;
         justify-content: space-between;
         color: ${colors.blackText};
         font-size: 14px;
-    }
-
-    .buttonShowSelectData {
-        width: 100%;
-        padding: 11px 5px 8px 5px;
-        position: relative;
-    }
-
-    .focuseButton {
-        color: white;
-        padding: 4px 5px;
     }
     
     .arrow {
@@ -103,42 +64,18 @@ export const FormStyles = styled.div`
         padding: 3px;
         margin: 0px 8px;
         transition: all 0.5s ease;
-    }
-
-    .up {
-        transform: rotate(-135deg);
-        top: 3px;
-    }
-
-    .down {
-        transform: rotate(45deg);
-    }
-
-    .selectDataList {
-        list-style: none;
-        padding: 0;
-        margin: 5px 0;
-        border: 2px solid ${colors.fieldsetBorder};
-        box-shadow: 0px 5px 20px rgba(53, 50, 56, 0.14);
-        border-radius: 8px;
-        position: absolute;
-        background-color: white;
-        & > * {
-            border-bottom: 2px solid ${colors.fieldsetBorder};
+        &[data-state='up'] {
+            transform: rotate(-135deg);
+            top: 3px;
         }
-        & :last-child {
-            border-bottom: none;
+        &[data-state='down'] {
+            transform: rotate(45deg);
+            top: 0px;
         }
-    }
-
-    .selectItem {
-        padding: 5px 17px;
-        cursor: pointer;
     }
 
     .buttonSubmit {
         padding: 18px;
-        margin: 20px 0 0 0;
         background-color: ${colors.buttonSubmit};
         border-radius: 8px;
         color: white;
@@ -158,5 +95,34 @@ export const FormStyles = styled.div`
     .buttonSubmit[disabled] {
         background-color: ${colors.buttonSubmitDisabled};
         color: ${colors.disabledText};
+    }
+
+    @media screen and (max-width: 910px) {
+        width: 100%;
+        
+        .requireInputs {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media screen and (max-width: 496px) {
+        font-size: 11px;
+
+        .formContainer {
+            padding: 30px 20px;
+        }
+
+        .requireInputs {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .fieldset,
+        .legend  {
+            font-size: 11px;
+        }
+    }
+
+    @media screen and (max-width: 392px) {
+        font-size: 11px;
     }
 `;

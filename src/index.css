@@ -49,5 +49,11 @@ input {
   cursor: pointer;
   background-color: inherit;
   padding: 0;
+  margin: 0;
+}
+
+fieldset {
+  padding-top: 0;
+  padding-bottom: 0;
 }
 

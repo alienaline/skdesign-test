@@ -9,3 +9,17 @@
   gap: 60px
 }
 
+@media screen and (max-width: 910px) {
+  .App {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 496px) {
+  .App {
+    padding: 15px;
+    gap: 30px;
+  }
+}
+
