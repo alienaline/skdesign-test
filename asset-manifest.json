@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/sk-design/static/css/main.9b33c21d.css",
+    "main.js": "/sk-design/static/js/main.3fbb9f07.js",
+    "static/media/SFUIDisplay-Semibold.woff": "/sk-design/static/media/SFUIDisplay-Semibold.3d90ba92e14bd029b706.woff",
+    "static/media/SFUIDisplay-Bold.woff": "/sk-design/static/media/SFUIDisplay-Bold.111df0192eebd73b0bdf.woff",
+    "static/media/SFUIDisplay-Regular.woff": "/sk-design/static/media/SFUIDisplay-Regular.1b6ee1f6f9e80f37ff4e.woff",
+    "static/media/SFUIDisplay-Semibold.woff2": "/sk-design/static/media/SFUIDisplay-Semibold.d3f53e856e658885ea97.woff2",
+    "static/media/SFUIDisplay-Bold.woff2": "/sk-design/static/media/SFUIDisplay-Bold.de06fd537f47d93309ef.woff2",
+    "static/media/SFUIDisplay-Regular.woff2": "/sk-design/static/media/SFUIDisplay-Regular.d5b1bd49ba459767871a.woff2",
+    "index.html": "/sk-design/index.html",
+    "main.9b33c21d.css.map": "/sk-design/static/css/main.9b33c21d.css.map",
+    "main.3fbb9f07.js.map": "/sk-design/static/js/main.3fbb9f07.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9b33c21d.css",
+    "static/js/main.3fbb9f07.js"
+  ]
+}
