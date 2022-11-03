@@ -5,4 +5,4 @@
 Код был написан на Typescript совместно с библиотекой 'styled-components'. 
 [Ссылка](https://alienaline.github.io/sk-design/) для просмотра.
 
-![image](https://github.com/alienaline/sk-design/tree/master/src/assets/images/preview.png)
+![image](https://raw.githubusercontent.com/alienaline/sk-design/master/src/assets/images/preview.png)
