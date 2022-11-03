@@ -1,10 +1,10 @@
 import React from 'react';
 
-type HeaderProp = {
+interface IHeaderProp {
     value: string
 }
 
-function Header(props: HeaderProp) {
+function Header(props: IHeaderProp): JSX.Element {
     return (
         <p className='header'>{props.value}</p>
     );

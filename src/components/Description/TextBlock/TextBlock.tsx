@@ -1,10 +1,10 @@
 import React from 'react';
 
-type TextBlockProps = {
+interface ITextBlockProps {
     children: string | React.ReactNode
 }
 
-function TextBlock(props: TextBlockProps) {
+function TextBlock(props: ITextBlockProps): JSX.Element {
     return (
         <p className='textBlock'>{props.children}</p>
     );

@@ -20,9 +20,13 @@ interface IForm {
 
 function Form() {
     const [displayOptions, setDisplayOptions] = useState<boolean>(false);
-    const { handleSubmit, control,  formState: { errors } } = useForm<IForm>({ mode: 'onChange'});
+    const { handleSubmit, control, reset, formState: { errors } } = useForm<IForm>({ mode: 'all'});
 
-    const onSubmit: SubmitHandler<IForm> = data => console.log(JSON.stringify(data));
+    const onSubmit: SubmitHandler<IForm> = (data) => {
+        console.log(JSON.stringify(data));
+        alert('Форма отправлена! Все данные в консоли.');
+        reset();
+    };
     
     return (
         <FormStyles>
@@ -35,10 +39,15 @@ function Form() {
                         control={control}
                         rules={{ 
                             required: 'Это обязательное поле',
+                            pattern: {
+                                value: /[A-Za-z]+/,
+                                message: 'Имя должно состоять из букв'
+                            },
                             minLength: {
                                 value: 2,
                                 message: 'Имя должно быть больше 1 символа'
                             } }}
+                        error={errors?.name ? true : false}
                         helperText={errors?.name?.message} />
                     <InputController 
                         name='tel'
@@ -46,10 +55,11 @@ function Form() {
                         control={control}
                         rules={{ 
                             required: 'Это обязательное поле',
-                            minLength: {
-                                value: 9,
-                                message: 'Номер не должен быть короче 9 символов'
+                            pattern: {
+                                value: /^[7-8]\d{10}$/,
+                                message: 'Номер должен начинатся с 7 или 8 и быть не короче 11 символов'
                             } }}
+                        error={errors?.tel ? true : false}
                         helperText={errors?.tel?.message} />
                     <InputController 
                         name='email'
@@ -58,10 +68,11 @@ function Form() {
                         control={control}
                         rules={{ 
                             required: 'Это обязательное поле',
-                            minLength: {
-                                value: 9,
-                                message: 'Номер не должен быть короче 9 символов'
+                            pattern: {
+                                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                message: 'Неверный email-адрес'
                             } }}
+                        error={errors?.email ? true : false}
                         helperText={errors?.email?.message} />
                     <InputController 
                         name='socialLink'
@@ -69,11 +80,9 @@ function Form() {
                         label='Ссылка на профиль *'
                         control={control}
                         rules={{ 
-                            required: 'Это обязательное поле',
-                            minLength: {
-                                value: 9,
-                                message: 'Номер не должен быть короче 9 символов'
-                            } }}
+                            required: 'Это обязательное поле'
+                        }}
+                        error={errors?.socialLink ? true : false}
                         helperText={errors?.socialLink?.message} />
                     <SelectDataCities 
                         data={cities}
@@ -81,6 +90,7 @@ function Form() {
                         name='city'
                         label='Выберите город *'
                         rules={{ required: 'Это обязательное поле' }}
+                        error={errors?.city ? true : false}
                         helperText={errors?.city?.message} />
                 </div>
                 <div className='optionalInputs'>

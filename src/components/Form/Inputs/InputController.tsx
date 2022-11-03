@@ -9,11 +9,11 @@ interface IInputController {
     control: any;
     rules?: object;
     helperText?: string;
+    error?: boolean;
 }
 
 
-function InputController (props: IInputController) {
-
+function InputController (props: IInputController): JSX.Element {
     return (
         <Controller
             name={props.name}
@@ -25,7 +25,8 @@ function InputController (props: IInputController) {
                     type={props.type && 'text'}
                     onChange={(event) => field.onChange(event)}
                     value={field.value || ''}
-                    helperText={props.helperText} />
+                    helperText={props.helperText}
+                    error={props.error} />
             )} />
     );
 }

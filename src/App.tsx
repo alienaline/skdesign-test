@@ -3,7 +3,7 @@ import './App.css';
 import FormContainer from './containers/FormContainer/FormContainer';
 import Text from './containers/TextContainer/Text';
 
-function App() {
+function App(): JSX.Element {
   return (
     <div className="App">
       <Text />

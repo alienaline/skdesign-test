@@ -115,11 +115,6 @@ export const FormStyles = styled.div`
         .requireInputs {
             grid-template-columns: repeat(2, 1fr);
         }
-
-        .fieldset,
-        .legend  {
-            font-size: 11px;
-        }
     }
 
     @media screen and (max-width: 392px) {

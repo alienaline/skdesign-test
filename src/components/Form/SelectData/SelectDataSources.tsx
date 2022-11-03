@@ -10,7 +10,7 @@ interface ISelectDataProps {
     control: any;
 }
 
-function SelectDataSources(props: ISelectDataProps) {
+function SelectDataSources(props: ISelectDataProps): JSX.Element {
     return (
         <Controller
             name={props.name}

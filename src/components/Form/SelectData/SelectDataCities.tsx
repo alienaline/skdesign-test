@@ -15,9 +15,10 @@ interface ISelectDataProps {
     control: any;
     rules: object;
     helperText: string | undefined;
+    error?: boolean;
 }
 
-function SelectDataCities(props: ISelectDataProps) {
+function SelectDataCities(props: ISelectDataProps): JSX.Element {
     return (
         <Controller
             name={props.name}
@@ -30,6 +31,7 @@ function SelectDataCities(props: ISelectDataProps) {
                     value={field.value || props.data[0].name}
                     onChange={(event) => field.onChange(event)}
                     className='selectDataCities'
+                    error={props.error}
                     helperText={props.helperText} >
                     { props.data.map((elem: ICities) => (
                         <MenuItem

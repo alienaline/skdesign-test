@@ -3,7 +3,7 @@ import { DescriptionStyles } from './DescriptionStyles';
 import Header from './Header/Header';
 import TextBlock from './TextBlock/TextBlock';
 
-function Description() {
+function Description(): JSX.Element {
     return (
         <DescriptionStyles>
             <Header value='Оставьте заявку и станьте частью нашей команды'/>
